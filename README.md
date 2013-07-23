@@ -14,6 +14,8 @@ is the same as running
     rake db:migrate
     rake db:seed
     
+and
+
     rake db:reset
 
 is the same as running
