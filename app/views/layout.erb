@@ -23,15 +23,9 @@
 <body>
   <div class="navbar">
     <div class="navbar-inner">
-      <a class="brand" href="/">Reddit</a>
+      <a class="brand" href="/">My Sweet Site</a>
       <ul class="nav pull-right">
         <% if current_user %>
-          <li>
-            <a href="/users/<%= current_user.id %>/profile">My Profile</a>
-          </li>
-          <li>
-            <a href="/post/create/">Create Post</a>
-          </li>
           <li>
             <a href="/sessions/logout">Log Out</a>
           </li>

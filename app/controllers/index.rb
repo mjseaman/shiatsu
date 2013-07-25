@@ -1,5 +1,5 @@
 get '/' do
-  @posts = all_posts
+
   erb :index
 end
 
