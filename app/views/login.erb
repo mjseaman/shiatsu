@@ -1,0 +1,76 @@
+<!-- Sign-in -->
+<div class="row">
+  <h2>Login</h2>
+  <form class="form-horizontal" action="/sessions" method="post">
+    <div class="control-group">
+      <label class="control-label" for="inputSigninEmail">Email</label>
+      <div class="controls">
+        <input id="inputSigninEmail" type="text" name="email" value="<%= @user.email if @user %>">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputSigninPassword">Password</label>
+      <div class="controls">
+        <input id="inputSigninPassword" type="password" name="password">
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <p class="text-error"><%= @message %></p>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </div>
+    </div>    
+  </form>
+  <h2>Sign up</h2>
+  <form class="form-horizontal" action="/users" method="post">
+    <div class="control-group">
+      <label class="control-label" for="inputSigninFirstName">First Name</label>
+      <div class="controls">
+        <input id="inputSigninFirstName" type="text" name="first_name" value="<%= @new_user.first_name %>">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputSigninLastName">Last Name</label>
+      <div class="controls">
+        <input id="inputSigninLastName" type="text" name="last_name" value="<%= @new_user.last_name %>">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputSigninEmail">Email</label>
+      <div class="controls">
+        <input id="inputSigninEmail" type="text" name="email" value="<%= @new_user.email %>">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputSigninPassword">Password</label>
+      <div class="controls">
+        <input id="inputSigninPassword" type="password" name="password">
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <% @new_user.errors.messages.each do |field, messages| %>
+          <p class="text-error"><%= field.to_s %>:</p>
+          <ul class="text-error">
+            <% messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div> 
+    <div class="control-group">
+      <div class="controls">
+        <button type="submit" class="btn btn-primary">Sign up</button>
+      </div>
+    </div>    
+  </form>
+</div>
+<!-- Sign-up -->
+<!-- <form action="/users" method="post">
+  <input type="text" name="first_name" placeholder="Bob" value="<%= @new_user.first_name %>">
+  <input type="text" name="last_name" placeholder="Dole" value="<%= @new_user.last_name %>">
+  <input type="text" name="email" placeholder="me@example.com" value="<%= @new_user.email %>">
+  <input type="password" name="password">
+  <button type="submit" class="btn btn-primary">
+</form> -->

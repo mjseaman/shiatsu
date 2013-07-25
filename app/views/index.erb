@@ -1,0 +1,19 @@
+<h1>Welcome to Reddit I mean Hacker News!</h1>
+<% if @user.nil? %>
+  <h3>Here are a bunch of articles</h3>
+<% else %>
+  <h3>Here are <%= @user.first_name %>'s articles</h3>
+<% end %>
+
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <h4><a href='<%= post.url %>'><%= post.title %></a></h4>
+    <p>
+      <a class="postvote" href='javascript:void(0)' data-postid="<%= post.id %>">UPVOTE</a>
+      <a class="postunvote hide" href='javascript:void(0)' data-postid="<%= post.id %>">UNVOTE</a>
+    </p>
+    <p><a href='/post/<%= post.id %>'>Comments</a> (<%= post.comments.count %>)</p>
+  <% end %>
+<% else %>
+  <h4>No posts to show</h4>
+<% end %>

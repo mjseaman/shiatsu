@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 
+    normalize.css removes cross-browser differences in defaults, e.g.,
+    differences in how form elements appear between Firefox and IE
+    See: http://necolas.github.com/normalize.css/
+  -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <!--
+    application.css is where you put your styles
+  -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/application.css">
+  <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+  <script src="/js/application.js"></script>
+
+  <title></title>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="/">Reddit</a>
+      <ul class="nav pull-right">
+        <% if current_user %>
+          <li>
+            <a href="/users/<%= current_user.id %>/profile">My Profile</a>
+          </li>
+          <li>
+            <a href="/post/create/">Create Post</a>
+          </li>
+          <li>
+            <a href="/sessions/logout">Log Out</a>
+          </li>
+        <% else %>
+          <li>
+            <a href="/sessions/new">Login/Sign-up</a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+
+		<div class='error' style="text-align:center;">
+			<h1 class="text-center">GET OUT OF MY HOUSE</h1>
+
+			<!-- To autoplay, add the autoplay attribute :) -->
+			<audio src="../../Cole.mp3" controls></audio>
+
+			<img class="not_found" src="../../dl.gif">
+
+			<p>Sorry, we couldn't find your page.  Sinatra would ask you to try this:</p>
+			<code>
+				<p>get <%= @request %> do</p>
+		    <p>  "Hello World!"</p>
+		    <p>end</p>
+			</code>
+		</div>
+  </div>
+</body>
+
+</html>
+
+	<!-- http://i.imgur.com/yiXmbVJ.png -->
