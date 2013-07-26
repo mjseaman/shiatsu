@@ -1,9 +1,21 @@
 $(document).ready(function() {
 
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $('.appt_book').on('click', function(e){
+    e.preventDefault();
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+    var button = $(this);
+    console.log(button.data('appointmentid'));
 
+    var request = $.ajax({
+      url: "/appointments/book",
+      type: "put",
+      data: { appointment_id: button.data('appointmentid')}
+    });
+
+    request.done(function(){
+      button.removeClass('btn-primary');
+      button.text("You been Boked!");
+      button.addClass('btn-success');
+    });
+  })
 });

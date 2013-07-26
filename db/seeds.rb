@@ -40,6 +40,17 @@ end
 	p "appointment #{num}: #{appointment.inspect}"
 end
 
+
+20.times do |num|
+	appointment = Appointment.create(
+		start_at: ApptTime.rand_time(2.days.ago),
+		duration: 30,
+		patient: nil,
+		therapist: Therapist.all.sample
+		)
+	p "appointment #{num}: #{appointment.inspect}"
+end
+
 20.times do |num|
 	user = User.create(
 		email: Faker::Internet.email,
