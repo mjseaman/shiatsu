@@ -8,3 +8,9 @@ th {
   text-align: left;
 }
 */
+.not_found {
+	display:block;
+	margin:auto;
+	margin-bottom: 1em;
+	width:30%;
+}

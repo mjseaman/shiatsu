@@ -23,42 +23,26 @@
 <body>
   <div class="navbar">
     <div class="navbar-inner">
-      <a class="brand" href="/">Reddit</a>
-      <ul class="nav pull-right">
-        <% if current_user %>
-          <li>
-            <a href="/users/<%= current_user.id %>/profile">My Profile</a>
-          </li>
-          <li>
-            <a href="/post/create/">Create Post</a>
-          </li>
-          <li>
-            <a href="/sessions/logout">Log Out</a>
-          </li>
-        <% else %>
-          <li>
-            <a href="/sessions/new">Login/Sign-up</a>
-          </li>
-        <% end %>
-      </ul>
+      <a class="brand" href="/">Head Back Home</a>
+
     </div>
   </div>
   <div class="container">
 
-		<div class='error' style="text-align:center;">
-			<h1 class="text-center">GET OUT OF MY HOUSE</h1>
+		<div>
+			<h1 class="text-center ">GET OUT OF MY HOUSE</h1>
+
+      <div class="not_found">
+        <p >Sorry, we couldn't find your page.  Sinatra would ask you to try this in your route:</p>
+        <pre>get <%= @request %> do<br>  "Hello World!"<br>end
+        </pre>
+      </div>
 
 			<!-- To autoplay, add the autoplay attribute :) -->
-			<audio src="../../Cole.mp3" controls></audio>
+			<audio class="not_found" src="../../Cole.mp3" controls></audio>
 
 			<img class="not_found" src="../../dl.gif">
-
-			<p>Sorry, we couldn't find your page.  Sinatra would ask you to try this:</p>
-			<code>
-				<p>get <%= @request %> do</p>
-		    <p>  "Hello World!"</p>
-		    <p>end</p>
-			</code>
+      
 		</div>
   </div>
 </body>
