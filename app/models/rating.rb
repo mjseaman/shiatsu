@@ -1,3 +1,3 @@
 class Rating < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :appointment
 end

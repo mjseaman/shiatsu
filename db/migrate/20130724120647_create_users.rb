@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :last_name
       t.string :phone
       t.boolean :is_active
+      t.string :type
       t.timestamps
     end
   end

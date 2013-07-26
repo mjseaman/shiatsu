@@ -4,6 +4,7 @@ class CreateRatings < ActiveRecord::Migration
   		t.integer :rating
   		t.string :comment
   		t.belongs_to :appointment
+  		t.timestamps
   	end
   end
 end

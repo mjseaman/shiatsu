@@ -1,3 +1,3 @@
 class Patient < User
-  # Remember to create a migration!
+  has_many :appointments
 end

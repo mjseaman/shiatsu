@@ -1,3 +1,3 @@
 class Condition < ActiveRecord::Base
-  # Remember to create a migration!
+  belong_to :patient
 end
