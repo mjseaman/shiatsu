@@ -40,6 +40,14 @@ end
 	p "appointment #{num}: #{appointment.inspect}"
 end
 
+20.times do |num|
+	user = User.create(
+		email: Faker::Internet.email,
+		first_name: Faker::Name.first_name,
+		last_name: Faker::Name.last_name,
+		password: 'password')
+	p "user #{num}: #{user}"
+end
 # class ApptTime
 # 	def self.rand_time(from, to=Time.now)
 # 	  Time.at(rand_in_range(from.to_f, to.to_f))
