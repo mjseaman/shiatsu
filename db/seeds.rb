@@ -10,6 +10,8 @@ class ApptTime
 	end
 end
 
+p DateTime.now
+
 20.times do |num|
 	user = Patient.create(
 		email: Faker::Internet.email,
@@ -29,12 +31,13 @@ end
 end
 
 20.times do |num|
-	appointment = Appointment.new(
-		appt_at: ApptTime.rand_time(2.days.ago),
+	appointment = Appointment.create(
+		start_at: ApptTime.rand_time(2.days.ago),
+		duration: 30,
 		patient: Patient.all.sample,
 		therapist: Therapist.all.sample
 		)
-	p "appointment #{num}: #{appointment}"
+	p "appointment #{num}: #{appointment.inspect}"
 end
 
 # class ApptTime
