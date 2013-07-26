@@ -19,7 +19,7 @@ get '/appointments/new' do
 end
 
 post '/appointments' do
-  "success"
+  p "these are the params: #{params}"
 end
 
 # get '/appointments/:id' do
