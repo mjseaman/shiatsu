@@ -21,7 +21,7 @@ $(document).ready(function() {
 
 
   $('#add-another-appointment').on('click', function() {
-    $('.appointment-new').toggle().prependTo("#appointment-list");
+    $('.appointment-new').first().clone().toggle().prependTo("#appointment-list");
   });
 
 });
