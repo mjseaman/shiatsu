@@ -1,4 +1,7 @@
 
+<h3>You have had <span class="massage_count"><%= current_user.appt_count %></span> massages </h3>
+
+
 <% open_appointments.each do |appointment|%>
-  <a class="btn btn-large btn-block btn-primary appt_book" data-appointmentid="<%= appointment.id %>" href="javascript:void(0)"><i class="icon-calendar icon-white"></i>    <%= appointment.start_at %></a>
+  <a class="btn btn-large btn-block btn-default appt_book" data-appointmentid="<%= appointment.id %>" href="javascript:void(0)"><i class="icon-calendar"></i>    <%= appointment.start_at %></a>
 <%end%>
