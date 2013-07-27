@@ -1,6 +1,6 @@
 get '/appointments' do
-  erb :appointments_book if 
-  redirect '/'
+  # redirect '/' if !patient? && !therapist?
+  erb :appointments_book 
 end
 
 put '/appointments/book' do
@@ -8,6 +8,7 @@ put '/appointments/book' do
   appointment.patient = current_user
   appointment.save
   current_user.appt_count += 1
+  current_user.save
 end
 
 # get '/appointments' do

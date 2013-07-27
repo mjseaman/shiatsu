@@ -14,7 +14,7 @@ $(document).ready(function() {
 
     request.done(function(){
       button.removeClass('btn-primary');
-      button.text("You been Boked!");
+      button.text("You been Booked!");
       button.addClass('btn-success');
     });
   });
