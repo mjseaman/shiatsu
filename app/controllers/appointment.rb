@@ -9,6 +9,8 @@ put '/appointments/book' do
   appointment.save
   current_user.appt_count += 1
   current_user.save
+  content_type :json
+  current_user.appt_count.to_json
 end
 
 # get '/appointments' do

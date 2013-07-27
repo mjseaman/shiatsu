@@ -6,4 +6,10 @@ class Appointment < ActiveRecord::Base
   validates_presence_of :therapist
   validates_uniqueness_of :start_at
 
+  before_validation :set_date
+
+  def set_date
+    self.start_date = start_at.to_date
+  end
+
 end

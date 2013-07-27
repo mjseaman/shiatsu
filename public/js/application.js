@@ -12,10 +12,11 @@ $(document).ready(function() {
       data: { appointment_id: button.data('appointmentid')}
     });
 
-    request.done(function(){
+    request.done(function(appt_count){
       button.removeClass('btn-primary');
       button.text("You been Booked!");
       button.addClass('btn-success');
+      $('.massage_count').text(appt_count);
     });
   });
 

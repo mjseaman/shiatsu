@@ -1,8 +1,16 @@
 helpers do
 
-  def open_appointments
-    p "in the open appts helper"
-    Appointment.where(patient_id: nil)
+  def appointments_on(date)
+    Appointment.where('start_date = ?',date).order("start_at ASC")
+  end
+
+  def distinct_dates
+    dates = Appointment.select(:start_date).map(&:start_date).uniq
+    dates.select {|date| date >= Date.today }.sort
+  end
+
+  def appointments_by_day
+    distinct_dates.inject([]) { |seed,value| seed << appointments_on(value) }
   end
 
 
