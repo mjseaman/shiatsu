@@ -1,7 +1,5 @@
-<!-- basic form: date, time, duration - default -->
-<!-- call partial that extends the time input -->
-<form action="/appointments" method="post">
-  <div id="datetimepicker" class="input-append date">
+<div class="appointment-new" style='display: none;'>
+  <div id="datetimepicker2" class="input-append date">
     <input type="text" name="appointment[][start_at]"></input>
     <span class="add-on">
       <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
@@ -20,18 +18,10 @@
    src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
   </script>
   <script type="text/javascript">
-    $('#datetimepicker').datetimepicker({
+    $('#datetimepicker2').datetimepicker({
       format: 'dd/MM/yyyy hh:mm:ss',
       pick12HourFormat: true
     });
   </script>
-
-  <input type="hidden" name="appointment[][duration]" value=10>
-  <div id="appointment-list"></div>
-  <button id='add-another-appointment' type="button" class="btn btn-primary">Add Appointments</button>
-  <button type="submit" class="btn btn-primary">Create</button>
-</form>
-
-<div id="partial">
-  <%= erb :_add_appointment %>
+  <input type="hidden" name="appointment[][duration]" value="10"></input>
 </div>

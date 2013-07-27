@@ -17,5 +17,11 @@ $(document).ready(function() {
       button.text("You been Boked!");
       button.addClass('btn-success');
     });
-  })
+  });
+
+
+  $('#add-another-appointment').on('click', function() {
+    $('.appointment-new').toggle().prependTo("#appointment-list");
+  });
+
 });
