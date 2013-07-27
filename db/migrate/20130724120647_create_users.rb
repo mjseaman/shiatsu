@@ -8,6 +8,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :phone
       t.boolean :is_active
       t.string :type
+      t.integer :appt_count, default: 0
+      t.integer :pressure_preference
       t.timestamps
     end
   end

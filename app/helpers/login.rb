@@ -15,5 +15,15 @@ helpers do
   def logout
     session.clear
   end
+
+  def patient?
+    current_user.type == "Patient" if current_user
+    false
+  end
+
+  def therapist?
+    current_user.type == "Therapist" if current_user
+    false
+  end
   
 end

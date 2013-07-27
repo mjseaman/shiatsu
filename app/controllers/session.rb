@@ -25,6 +25,6 @@ end
 
 get '/sessions/logout' do
   logout
-  redirect to(request.referrer)
+  redirect to('/')
 end
 
