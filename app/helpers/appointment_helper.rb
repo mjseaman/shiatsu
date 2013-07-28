@@ -1,7 +1,11 @@
 helpers do
 
-  def appointments_on(date)
-    Appointment.where('start_date = ?',date).order("start_at ASC")
+  def appointments_on(date, id=nil)
+    if id
+      Appointment.where('start_date = ? AND therapist_id=?',date, id).order("start_at ASC")
+    else
+      Appointment.where('start_date = ?',date).order("start_at ASC")
+    end
   end
 
   def distinct_dates
