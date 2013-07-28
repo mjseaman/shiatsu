@@ -17,13 +17,13 @@ helpers do
   end
 
   def patient?
-    current_user.type == "Patient" if current_user
-    false
+    return false unless current_user
+    current_user.type == "Patient" 
   end
 
   def therapist?
-    current_user.type == "Therapist" if current_user
-    false
+    return false unless current_user
+    current_user.type == "Therapist" 
   end
   
 end

@@ -1,5 +1,5 @@
 get '/appointments' do
-  # redirect '/' if !patient? && !therapist?
+  redirect '/' if !patient? && !therapist?
   erb :appointments_book 
 end
 
