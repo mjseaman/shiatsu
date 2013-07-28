@@ -1,3 +1,3 @@
 class Condition < ActiveRecord::Base
-  belong_to :patient
+  belongs_to :patient
 end
