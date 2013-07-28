@@ -5,6 +5,7 @@ helpers do
   end
 
   def fullname
+    return false unless current_user
     current_user.first_name + " " + current_user.last_name
   end
 

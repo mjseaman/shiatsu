@@ -20,10 +20,16 @@ before '/users/:id/*' do
 end
 
 get '/users/:id/profile' do
-  p "Im here"
   @user = User.find_by_id(params[:id])
   erb :profile
 end
+
+#user route to update profile
+# put 'user/:id/profile/update' do
+# #  redirect '/'
+#   user = User.find(current_user.id)
+# end
+
 
 get '/users/:id/posts' do
   @user = User.find_by_id(params[:id])
@@ -37,8 +43,5 @@ get '/users/:id/comments' do
   erb :comments
 end
 
-post 'user/:id/profile/update' do
 
- redirect '/'
 
-end
