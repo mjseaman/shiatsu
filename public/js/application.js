@@ -74,6 +74,20 @@ $(document).ready(function() {
     }
   });
 
+  /* Therapist Bookings*/
+  $('.show_appt dropdown').on('hover', function(e){
+    $('.dropdown-toggle').dropdown();
+  });
+
+  // Therapist delete appointment 
+  $('.delete_appt').on('click', function(e){
+    e.preventDefault();
+
+    var request = $.ajax({ url: $(this).find('a').attr('href'), type: 'delete' });
+    console.log($(this).find('a').attr('href'));
+    request.done(function () { document.location.reload(); });
+  });
+
   $('#add-another-appointment').on('click', function() {
     $('.appointment-new').first().clone().toggle().prependTo("#appointment-list");
   });
