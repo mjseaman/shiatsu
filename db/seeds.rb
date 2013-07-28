@@ -71,6 +71,12 @@ Therapist.create(
 		last_name: Faker::Name.last_name,
 		password: 'password')
 
+Admin.create(
+		email: "admin@admin.com",
+		first_name: "Bo",
+		last_name: "Jangles",
+		password: 'password')
+
 # class ApptTime
 # 	def self.rand_time(from, to=Time.now)
 # 	  Time.at(rand_in_range(from.to_f, to.to_f))

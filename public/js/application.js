@@ -1,31 +1,3 @@
-<<<<<<< HEAD
-
-=======
-function clearButtonClasses(button) {
-  button.removeClass('btn-info btn-success btn-primary available unavailable booked');
-}
-
-function updateButton(button, cssClass, message) {
-  clearButtonClasses(button);
-  button.fadeOut(500, function() {
-    button.text(message).fadeIn(500);
-  });
-  button.addClass(cssClass);
-}
-
-function updateMassageCount(count) {
-  $('.massage_count').text(count);
-}
-
-function failBooking(button, message) {
-  updateButton(button, 'btn-danger', message);
-}
-
-function passBooking(button, message) {
-  updateButton(button, 'btn-success booked', message);
-}
->>>>>>> 85e2b8bcc5204a40e8e7e348b5272e9c1a3c1d62
-
 $(document).ready(function() {
 
   $('.appt_book').on('click', function(e) {
@@ -33,7 +5,7 @@ $(document).ready(function() {
 
     var button = $(this);
     var time = button.data('time');
-<<<<<<< HEAD
+
   
     if (button.hasClass('unavailable'))
       {
@@ -117,7 +89,7 @@ $(document).ready(function() {
 });
 
 function clearButtonClasses(button) {
-  button.removeClass('btn-info btn-success btn-primary available unavailable booked');
+  button.removeClass('btn-info btn-success btn-primary btn-danger available unavailable booked');
 }
 
 function updateButton(button,cssClass,message) {

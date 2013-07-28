@@ -1,0 +1,31 @@
+
+<div>
+	<table class="table table-striped">
+			<tr>
+				<th>User Type</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email/Username</th>
+				<th>Phone Number</th>
+				<th>Active</th>
+				<th>Appt. Count</th>
+				<th>Appt. Max</th>
+			</tr>
+		<% all_users.each do |user| %>
+			<tr>
+				<td><%= user.type 					%></td>
+				<td><%= user.first_name 		%></td>
+				<td><%= user.last_name  		%></td>
+				<td><%= user.email 					%></td>
+				<td><%= user.phone 					%></td>
+				<td><%= user.is_active			%></td>
+				<td><%= user.appt_count			%></td>
+				<td><%= user.appt_count_max	%></td>
+				<td>
+					<a class="btn btn-mini btn-warning" href="javascript:void(0)" >Edit</a>
+					<a class="btn btn-mini btn-danger" href="javascript:void(0)" >Delete</a>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+</div>

@@ -37,10 +37,10 @@ post '/users/:id/appointments' do
   p "these are the params: #{params}"
   @appointments = Appointment.new
   @appointments.parse_time_block(params[:timeblock], params[:id])
-  redirect "/users/#{params[:id]}/appointments/show"
+  redirect "/users/#{params[:id]}/appointments"
 end
 
-get '/users/:id/appointments/show' do 
+get '/users/:id/appointments' do 
   @appointments = Appointment.find_all_by_therapist_id(params[:id])
 
   erb :therapist_appointments_show

@@ -3,22 +3,23 @@
 
 
 <h3>You've created <%= @appointments.count %> </span> appointments! </h3>
-
-<ul class="horizontal-slide">
-<% appointments_by_day.each do |day| %>
-  <li class="day">
-    <div>
-      <h4 class="day_label"><%= day.first.start_date.strftime("%A, %-m/%d") %></h4>
-     <% day.each do |appointment| %>
-     <div class="dropdown">
-       <a class="btn btn-large btn-block show_appt dropdown-toggle <%= button_class(appointment) %>" data-appointmentid="<%= appointment.id %>" data-toggle="dropdown" data-time="<%= appointment.start_at.strftime("%-I:%M %P") %>" href="javascript:void(0)"><i class="icon-calendar"></i><%= appointment.start_at.strftime("%-I:%M %P") %><b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li class='delete_appt'><a href="/users/<%= appointment.therapist_id %>/appointments/<%= appointment.id %>">delete</a></li>
-            </ul>
+<div class="shadowbox">
+  <ul class="horizontal-slide">
+  <% appointments_by_day.each do |day| %>
+    <li class="day">
+      <div>
+        <h4 class="day_label"><%= day.first.start_date.strftime("%A, %-m/%d") %></h4>
+       <% day.each do |appointment| %>
+       <div class="dropdown">
+         <a class="btn btn-large btn-block show_appt dropdown-toggle <%= button_class(appointment) %>" data-appointmentid="<%= appointment.id %>" data-toggle="dropdown" data-time="<%= appointment.start_at.strftime("%-I:%M %P") %>" href="javascript:void(0)"><i class="icon-calendar"></i><%= appointment.start_at.strftime("%-I:%M %P") %><b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class='delete_appt'><a href="/users/<%= appointment.therapist_id %>/appointments/<%= appointment.id %>">delete</a></li>
+              </ul>
+        </div>
+      <% end %>
       </div>
-    <% end %>
-    </div>
-  </li>
-<% end %>
+    </li>
+  <% end %>
 
-</ul>
+  </ul>
+</div>

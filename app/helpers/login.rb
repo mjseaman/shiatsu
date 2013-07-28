@@ -21,6 +21,10 @@ helpers do
     session.clear
   end
 
+  def all_users
+    User.order("last_name ASC")
+  end
+
   def patient?
     return false unless current_user
     current_user.type == "Patient" 
