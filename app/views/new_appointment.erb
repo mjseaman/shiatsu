@@ -1,4 +1,4 @@
-<!-- basic form: make schedul a little easier to manage, like 10min time slots of something, right now it seems slow to always click the calendar and the specific time, what if the therapist can give us a start and end time and we fill in ten minute slots accordingly, she could give us as many time slots as she wants! -->
+<!-- basic form: make schedule a little easier to manage, like 10min time slots of something, right now it seems slow to always click the calendar and the specific time, what if the therapist can give us a start and end time and we fill in ten minute slots accordingly, she could give us as many time slots as she wants! -->
 <form action="/appointments" method="post">
   <div id="datetimepicker" class="input-append date">
     <input type="text" name="appointment[][start_at]"></input>
@@ -26,7 +26,13 @@
   </script>
 
   <input type="hidden" name="appointment[][duration]" value=10>
-  <div id="appointment-list"></div>
+
+  <div id="appointment-list">
+    <!-- new appointments get added here -->
+    <!-- Problem: when you add multiple appointments in a day, the time gets changed to the same time for that day. We may want to separate out time and day as pickers, or go more simply without date-timepicker.css-->
+    <!-- Look at the add notes core challenge that uses a note template -->
+  </div>
+
   <button id='add-another-appointment' type="button" class="btn btn-primary">Add Appointments</button>
   <button type="submit" class="btn btn-primary">Create</button>
 </form>

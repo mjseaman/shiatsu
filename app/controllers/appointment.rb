@@ -23,12 +23,16 @@ end
 
 # end
 
-get '/appointments/new' do
-  erb :new_appointment
+get '/users/:id/appointments/new' do
+  erb :new_appointment_bookings
 end
 
-post '/appointments' do
+post '/users/:id/appointments' do
   p "these are the params: #{params}"
+   # {"block"=>{"date"=>"2014-12-14", "starttime"=>"14:14", "endtime"=>"17:30", "duration"=>"10"}}
+
+  # initialize appointments and pass in the therapist id also...
+  # we need the id from one of these routes!
 end
 
 # get '/appointments/:id' do

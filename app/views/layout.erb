@@ -34,7 +34,7 @@
             <!-- <li><a href="/sessions/logout">Log Out</a></li> -->
           <% elsif current_user.type == "Therapist" %>
             <li><a href="#">Profile</a></li>
-            <li><a href="#">Create Appointments</a></li>
+            <li><a href="/users/<%= current_user.id %>/appointments/new">Create Appointments</a></li>
             <!-- <li><a href="/sessions/logout">Log Out</a></li> -->
           <% end %>
             <li><a href="/sessions/logout">Log Out</a></li> 
