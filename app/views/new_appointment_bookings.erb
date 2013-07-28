@@ -1,26 +1,23 @@
-<!--
-create timeblock
-Choose a date
-set beginning time
-set end time
-set duration
-submit form
-
-controller will handle creating times with durations
- -->
-
-
 <form action="/users/<%= current_user.id %>/appointments" method="post">
-    <h2>appointment time block</h2>
-    <label for="date">date</label>
-    <input id="date" type="date" name="timeblock[][date]"/>
-    <label for="start_time">start time</label>
-    <input id="start_time" type="time" name="timeblock[][start_at]"/>
-    <label for="end_time">end time</label>
-    <input id="end_time" type="time" name="timeblock[][end_at]"/>
-    <label for="duration">duration</label>
-    <input id="duration" type="number" name="timeblock[][duration]" min="5" max="120" step="5" value='10'/>
-    <input type='submit'/>
-  </form>
+   <h2>appointment time block</h2>
+   <label for="date">date</label>
+   <input id="date" type="date" name="timeblock[][date]"/>
+   <label for="start_time">start time</label>
+   <input id="start_time" type="time" name="timeblock[][start_at]"/>
+   <label for="end_time">end time</label>
+   <input id="end_time" type="time" name="timeblock[][end_at]"/>
+   <label for="duration">duration</label>
+   <input id="duration" type="number" name="timeblock[][duration]" min="5" max="120" step="5" value='10'>
+
+   <div id="appt-list">
+ 
+   </div>
+   
+   <button id='add-appt-block' type="button" class="btn btn-primary">add time blocks</button>
+   <button type="submit" class="btn btn-primary">create</button>
+</form>
 
 
+<div>
+  <%= erb :_add_appointment %>
+</div>

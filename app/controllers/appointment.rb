@@ -39,18 +39,14 @@ end
 
 post '/users/:id/appointments' do
   p "these are the params: #{params}"
-   # {"block"=>{"date"=>"2014-12-14", "starttime"=>"14:14", "endtime"=>"17:30", "duration"=>"10"}}
   @appointments = Appointment.new
   @appointments.parse_time_block(params[:timeblock], params[:id])
-  redirect "/users/#{params[:id]}/appointments"
-  # at some point we should account for errors!
+  redirect "/users/#{params[:id]}/appointments/show"
 end
 
 get '/users/:id/appointments/show' do 
   @appointments = Appointment.find_all_by_therapist_id(params[:id])
-  # think about seperating old from new appointments
-  # will show appointments 
-  # follow view from patient's appointment view
+
   erb :therapist_appointments_show
 end
 

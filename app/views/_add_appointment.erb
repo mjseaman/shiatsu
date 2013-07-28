@@ -1,27 +1,11 @@
-<div class="appointment-new" style='display: none;'>
-  <div id="datetimepicker2" class="input-append date">
-    <input type="text" name="appointment[][start_at]"></input>
-    <span class="add-on">
-      <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-    </span>
-  </div>
-  <script type="text/javascript"
-   src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-  </script> 
-  <script type="text/javascript"
-   src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
-  </script>
-  <script type="text/javascript"
-   src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
-  </script>
-  <script type="text/javascript"
-   src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
-  </script>
-  <script type="text/javascript">
-    $('#datetimepicker2').datetimepicker({
-      format: 'dd/MM/yyyy hh:mm:ss',
-      pick12HourFormat: true
-    });
-  </script>
-  <input type="hidden" name="appointment[][duration]" value="10"></input>
+<div class="appt-new" style='display: none;'>
+  <h3>next time block</h3>
+  <label for="date">date</label>
+   <input id="date" type="date" name="timeblock[][date]"/>
+   <label for="start_time">start time</label>
+   <input id="start_time" type="time" name="timeblock[][start_at]"/>
+   <label for="end_time">end time</label>
+   <input id="end_time" type="time" name="timeblock[][end_at]"/>
+   <label for="duration">duration</label>
+   <input id="duration" type="number" name="timeblock[][duration]" min="5" max="120" step="5" value='10'>
 </div>

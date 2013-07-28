@@ -17,7 +17,6 @@ class Appointment < ActiveRecord::Base
   def parse_time_block(timeblock, id)
     
     timeblock.each do |block|
-      p block
       start_datetime = parse_datetime(block['date'], block['start_at'])
       end_datetime = parse_datetime(block['date'], block['end_at'])
       duration_seconds = block['duration'].to_i * 60 

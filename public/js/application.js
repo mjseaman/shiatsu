@@ -88,8 +88,8 @@ $(document).ready(function() {
     request.done(function () { document.location.reload(); });
   });
 
-  $('#add-another-appointment').on('click', function() {
-    $('.appointment-new').first().clone().toggle().prependTo("#appointment-list");
+  // dynamic form to add more appointment blocks
+  $('#add-appt-block').on('click', function() {
+    $('.appt-new').last().clone().appendTo("#appt-list").show();
   });
-
 });
