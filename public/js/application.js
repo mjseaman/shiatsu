@@ -1,6 +1,6 @@
 
 function clearButtonClasses(button) {
-  button.removeClass('btn-info btn-success btn-primary');
+  button.removeClass('btn-info btn-success btn-primary available unavailable booked');
 }
 
 function updateButton(button,cssClass,message) {
@@ -17,21 +17,10 @@ function updateMassageCount(count) {
 
 function failBooking(button,message) {
   updateButton(button,'btn-danger',message);
-  // clearButtonClasses(button);
-  // button.fadeOut(500, function() {
-  //   button.text(message).fadeIn(500);
-  // });
-  // button.addClass('btn-danger');
 }
 
 function passBooking(button, message) {
-  updateButton(button,'btn-success',message);
-  // clearButtonClasses(button);
-  // button.fadeOut(500, function() {
-  //   button.text(message).fadeIn(500);
-  // });
-  // button.addClass('btn-success');
-  // $('.massage_count').text(data.appt_count);
+  updateButton(button,'btn-success booked',message);
 }
 
 $(document).ready(function() {
@@ -40,9 +29,8 @@ $(document).ready(function() {
     e.preventDefault();
 
     var button = $(this);
-    console.log(button);
-    console.log(button.data('appointmentid'));
-
+    var time = button.data('time');
+  
     if (button.hasClass('unavailable'))
       {
         void(0);
@@ -56,11 +44,9 @@ $(document).ready(function() {
       });
 
       request.done(function(data){
-        console.log(data);
         if (data.booked === true)
         {
-          console.log("passed");
-          passBooking(button, (button.text() +' Booked!'));
+          passBooking(button, (time + " Booked!"));
           updateMassageCount(data.appt_count);
         }
         else
@@ -71,23 +57,25 @@ $(document).ready(function() {
 
       request.fail(function(data){
         failBooking(button,"Server Error");
-        // console.log("in the fail")
-        // button.removeClass('btn-info btn-success btn-primary');
-        // button.fadeOut(500, function() {
-        //   button.text('Booking failed. Sorry...').fadeIn(500);
-        // });
-        // button.addClass('btn-danger');
+      });
+    }
+    else if (button.hasClass('booked'))
+    {
+      var request = $.ajax({
+        url: "/appointments/unbook",
+        type: "put",
+        data: { appointment_id: button.data('appointmentid')}
+      });
+
+      request.done(function(data) {
+        updateButton(button,"available btn-info",(time + " Unbooked!"));
+        updateMassageCount(data.appt_count);
       });
     }
   });
-
 
   $('#add-another-appointment').on('click', function() {
     $('.appointment-new').first().clone().toggle().prependTo("#appointment-list");
   });
 
 });
-
-
-
-

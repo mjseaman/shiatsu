@@ -7,7 +7,7 @@
     <div>
       <h4 class="day_label"><%= day.first.start_date.strftime("%A, %-m/%d") %></h4>
      <% day.each do |appointment| %>
-     <a class="btn btn-large btn-block appt_book <%= button_class(appointment) %>" data-appointmentid="<%= appointment.id %>" href="javascript:void(0)"><i class="icon-calendar"></i>    <%= appointment.start_at.strftime("%-I:%M %P") %></a>
+     <a class="btn btn-large btn-block appt_book <%= button_class(appointment) %>" data-appointmentid="<%= appointment.id %>" data-time="<%= appointment.start_at.strftime("%-I:%M %P") %>" href="javascript:void(0)"><i class="icon-calendar"></i><%= appointment.start_at.strftime("%-I:%M %P") %></a>
     <% end %>
     </div>
   </li>

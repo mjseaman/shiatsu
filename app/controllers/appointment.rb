@@ -19,6 +19,16 @@ put '/appointments/book' do
   {appt_count: current_user.appt_count_max - current_user.appt_count,booked: booked}.to_json
 end
 
+put '/appointments/unbook' do
+  appointment = Appointment.find(params[:appointment_id])
+  appointment.patient = nil
+  appointment.save
+  current_user.appt_count -= 1
+  current_user.save
+  content_type :json
+  {appt_count: current_user.appt_count_max - current_user.appt_count}.to_json
+end
+
 # get '/appointments' do
 
 # end
