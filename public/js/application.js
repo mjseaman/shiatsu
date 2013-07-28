@@ -1,9 +1,46 @@
+
+function clearButtonClasses(button) {
+  button.removeClass('btn-info btn-success btn-primary');
+}
+
+function updateButton(button,cssClass,message) {
+  clearButtonClasses(button);
+  button.fadeOut(500, function() {
+    button.text(message).fadeIn(500);
+  });
+  button.addClass(cssClass);
+}
+
+function updateMassageCount(count) {
+  $('.massage_count').text(count);
+}
+
+function failBooking(button,message) {
+  updateButton(button,'btn-danger',message);
+  // clearButtonClasses(button);
+  // button.fadeOut(500, function() {
+  //   button.text(message).fadeIn(500);
+  // });
+  // button.addClass('btn-danger');
+}
+
+function passBooking(button, message) {
+  updateButton(button,'btn-success',message);
+  // clearButtonClasses(button);
+  // button.fadeOut(500, function() {
+  //   button.text(message).fadeIn(500);
+  // });
+  // button.addClass('btn-success');
+  // $('.massage_count').text(data.appt_count);
+}
+
 $(document).ready(function() {
 
   $('.appt_book').on('click', function(e){
     e.preventDefault();
 
     var button = $(this);
+    console.log(button);
     console.log(button.data('appointmentid'));
 
     if (button.hasClass('unavailable'))
@@ -22,30 +59,24 @@ $(document).ready(function() {
         console.log(data);
         if (data.booked === true)
         {
-          button.removeClass('btn-info btn-success btn-primary');
-          button.fadeOut(500, function() {
-            button.text('Booked!').fadeIn(500);
-          });
-          button.addClass('btn-success');
-          $('.massage_count').text(data.appt_count);
+          console.log("passed");
+          passBooking(button, (button.text() +' Booked!'));
+          updateMassageCount(data.appt_count);
         }
         else
         {
-          button.removeClass('btn-info btn-success btn-primary');
-          button.fadeOut(500, function() {
-            button.text("Don't be greedy now...").fadeIn(500);
-          });
-          button.addClass('btn-danger');
+          failBooking(button, "Don't be greedy now...");
         }
       });
 
-      request.fail(function(appt_count){
-        console.log("in the fail")
-        button.removeClass('btn-info btn-success btn-primary');
-        button.fadeOut(500, function() {
-          button.text('Booking failed. Sorry...').fadeIn(500);
-        });
-        button.addClass('btn-danger');
+      request.fail(function(data){
+        failBooking(button,"Server Error");
+        // console.log("in the fail")
+        // button.removeClass('btn-info btn-success btn-primary');
+        // button.fadeOut(500, function() {
+        //   button.text('Booking failed. Sorry...').fadeIn(500);
+        // });
+        // button.addClass('btn-danger');
       });
     }
   });
@@ -56,3 +87,7 @@ $(document).ready(function() {
   });
 
 });
+
+
+
+
