@@ -1,4 +1,16 @@
 
-<% open_appointments.each do |appointment|%>
-  <a class="btn btn-large btn-block btn-primary appt_book" data-appointmentid="<%= appointment.id %>" href="javascript:void(0)"><i class="icon-calendar icon-white"></i>    <%= appointment.start_at %></a>
-<%end%>
+<h3>You have <span class="massage_count"><%= current_user.appt_count_max - current_user.appt_count %></span> remaining available massages </h3>
+
+<ul class="horizontal-slide">
+<% appointments_by_day.each do |day| %>
+  <li class="day">
+    <div>
+      <h4 class="day_label"><%= day.first.start_date.strftime("%A, %-m/%d") %></h4>
+     <% day.each do |appointment| %>
+     <a class="btn btn-large btn-block appt_book <%= button_class(appointment) %>" data-appointmentid="<%= appointment.id %>" data-time="<%= appointment.start_at.strftime("%-I:%M %P") %>" href="javascript:void(0)"><i class="icon-calendar"></i><%= appointment.start_at.strftime("%-I:%M %P") %></a>
+    <% end %>
+    </div>
+  </li>
+<% end %>
+
+</ul>
