@@ -25,7 +25,7 @@
 <body>
   <div class="navbar">
     <div class="navbar-inner">
-      <a class="brand" href="/">WhiteBoard</a>
+      <a class="brand" href="/">Shiatsu</a>
       <ul class="nav pull-right">
         <% if current_user %>
           <% if current_user.type == "Patient" %>
@@ -44,8 +44,13 @@
       </ul>
     </div>
   </div>
-  <div class="container">
-    <%= yield %>
+  <div id="wrap">
+    <div id="main" class="container clear-top">
+      <%= yield %>
+    </div>
   </div>
+  <footer class="footer">
+  <p>Made in San Francisco by Zassmin, Eric, Daniel and Mitch</p>
+  </footer>
 </body>
 </html>
