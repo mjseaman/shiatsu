@@ -4,13 +4,19 @@ get '/appointments' do
 end
 
 put '/appointments/book' do
-  appointment = Appointment.find(params[:appointment_id])
-  appointment.patient = current_user
-  appointment.save
-  current_user.appt_count += 1
-  current_user.save
+  # if 
+  if current_user.appt_count < current_user.appt_count_max
+    appointment = Appointment.find(params[:appointment_id])
+    appointment.patient = current_user
+    appointment.save
+    current_user.appt_count += 1
+    current_user.save
+    booked = true
+  else
+    booked = false
+  end
   content_type :json
-  current_user.appt_count.to_json
+  {appt_count: current_user.appt_count_max - current_user.appt_count,booked: booked}.to_json
 end
 
 # get '/appointments' do
