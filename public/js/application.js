@@ -1,12 +1,39 @@
+<<<<<<< HEAD
 
+=======
+function clearButtonClasses(button) {
+  button.removeClass('btn-info btn-success btn-primary available unavailable booked');
+}
+
+function updateButton(button, cssClass, message) {
+  clearButtonClasses(button);
+  button.fadeOut(500, function() {
+    button.text(message).fadeIn(500);
+  });
+  button.addClass(cssClass);
+}
+
+function updateMassageCount(count) {
+  $('.massage_count').text(count);
+}
+
+function failBooking(button, message) {
+  updateButton(button, 'btn-danger', message);
+}
+
+function passBooking(button, message) {
+  updateButton(button, 'btn-success booked', message);
+}
+>>>>>>> 85e2b8bcc5204a40e8e7e348b5272e9c1a3c1d62
 
 $(document).ready(function() {
 
-  $('.appt_book').on('click', function(e){
+  $('.appt_book').on('click', function(e) {
     e.preventDefault();
 
     var button = $(this);
     var time = button.data('time');
+<<<<<<< HEAD
   
     if (button.hasClass('unavailable'))
       {
@@ -50,9 +77,42 @@ $(document).ready(function() {
       }
   });
 
-  $('#add-another-appointment').on('click', function() {
-    $('.appointment-new').first().clone().toggle().prependTo("#appointment-list");
+  /* Therapist Bookings*/
+  $('.show_appt dropdown').on('hover', function(e) {
+    $('.dropdown-toggle').dropdown();
   });
+
+  // Therapist delete appointment 
+  $('.delete_appt').on('click', function(e) {
+    e.preventDefault();
+
+    var request = $.ajax({
+      url: $(this).find('a').attr('href'),
+      type: 'delete'
+    });
+    console.log($(this).find('a').attr('href'));
+    request.done(function() {
+      document.location.reload();
+    });
+  });
+
+  // dynamic form to add more appointment blocks
+  $('#add-appt-block').on('click', function() {
+    $('.appt-new').last().clone().appendTo("#appt-list").show();
+  });
+
+  //  started ajax call to update preferences
+  // $('.update_preference').on('click', function(e){
+  //   e.preventDefault()
+  //   $.ajax({
+  //          url: "/users/book",
+  //          type: "put",
+  //          data: { preference: button.data('preference')}
+  //          }).done(function(data){
+
+  //          })
+  //   });
+  
 
 });
 

@@ -4,6 +4,11 @@ helpers do
     @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
   end
 
+  def fullname
+    return false unless current_user
+    current_user.first_name + " " + current_user.last_name
+  end
+
   def current_user=(user)
     session[:user_id] = user.id
   end

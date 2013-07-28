@@ -29,28 +29,21 @@ put '/appointments/unbook' do
   {appt_count: current_user.appt_count_max - current_user.appt_count}.to_json
 end
 
-# get '/appointments' do
-
-# end
-
 get '/users/:id/appointments/new' do
   erb :new_appointment_bookings
 end
 
 post '/users/:id/appointments' do
   p "these are the params: #{params}"
-   # {"block"=>{"date"=>"2014-12-14", "starttime"=>"14:14", "endtime"=>"17:30", "duration"=>"10"}}
   @appointments = Appointment.new
   @appointments.parse_time_block(params[:timeblock], params[:id])
-  redirect '/'
-  # at some point we should account for errors!
+  redirect "/users/#{params[:id]}/appointments/show"
 end
 
-get '/users/:id/appointments' do 
+get '/users/:id/appointments/show' do 
   @appointments = Appointment.find_all_by_therapist_id(params[:id])
-  # think about seperating old from new appointments
-  # will show appointments 
-  # follow view from patient's appointment view
+
+  erb :therapist_appointments_show
 end
 
 # get '/appointments/:id/edit' do
@@ -59,8 +52,12 @@ end
 # put '/appointments/:id' do
 # end
 
-# delete '/appointments/:id' do
-# end
+delete '/users/:id/appointments/:id' do
+
+  p "these are the params #{params}"
+  appointment = Appointment.find(params[:id])
+  appointment.delete
+end
 
 
 

@@ -24,6 +24,13 @@ get '/users/:id/profile' do
   erb :profile
 end
 
+#user route to update profile
+# put 'user/:id/profile/update' do
+# #  redirect '/'
+#   user = User.find(current_user.id)
+# end
+
+
 get '/users/:id/posts' do
   @user = User.find_by_id(params[:id])
   @posts = @user.posts
@@ -35,3 +42,6 @@ get '/users/:id/comments' do
   @comments = @user.comments
   erb :comments
 end
+
+
+
