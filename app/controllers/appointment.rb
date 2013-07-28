@@ -29,10 +29,6 @@ put '/appointments/unbook' do
   {appt_count: current_user.appt_count_max - current_user.appt_count}.to_json
 end
 
-# get '/appointments' do
-
-# end
-
 get '/users/:id/appointments/new' do
   erb :new_appointment_bookings
 end

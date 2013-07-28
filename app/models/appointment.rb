@@ -2,7 +2,8 @@ class Appointment < ActiveRecord::Base
   belongs_to :patient
   belongs_to :therapist
   has_many :ratings
-
+  # do a before save callback so that we don't reset an appointment that has already be assigned
+  # add an index to the table for patient_id or something to make sure two users don't sign up for the same appointment
   before_validation :set_date 
 
   validates_presence_of :duration

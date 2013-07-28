@@ -72,6 +72,9 @@ $(document).ready(function() {
         updateMassageCount(data.appt_count);
       });
     }
+    
+  
+
   });
 
   /* Therapist Bookings*/
