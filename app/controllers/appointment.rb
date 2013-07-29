@@ -53,13 +53,15 @@ end
 # end
 
 delete '/users/:id/appointments/:id' do
-
-  p "these are the params #{params}"
-  appointment = Appointment.find(params[:id])
+  @appointment = Appointment.find(params[:id])
   appointment.delete
 end
 
-
+put '/users/:id/appointments/:start_date' do
+  @appointment = Appointment.find_all_by_therapist_id_and_start_date(params[:id], params[:start_date]) 
+  @appointment.map(&:delete)
+  @appointment.to_json
+end
 
 
 # GET /photos index display a list of all photos

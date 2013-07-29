@@ -9,14 +9,11 @@
    <label for="duration">duration</label>
    <input id="duration" type="number" name="timeblock[][duration]" min="5" max="120" step="5" value='10'>
 
-   <div id="appt-list">
- 
-   </div>
+   <div id="appt-list"></div>
    
    <button id='add-appt-block' type="button" class="btn btn-primary">add time blocks</button>
    <button type="submit" class="btn btn-primary">create</button>
 </form>
-
 
 <div>
   <%= erb :_add_appointment %>
