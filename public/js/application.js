@@ -85,7 +85,6 @@ $(document).ready(function() {
       url: $(this).find('a').attr('href'),
       type: 'delete'
     });
-    console.log($(this).find('a').attr('href'));
     request.done(function() {
       document.location.reload();
     });
@@ -94,9 +93,8 @@ $(document).ready(function() {
   // therapist to delete appointments on the same day
   $('.therapist_day_label').hover(function() {
     var ogText = $(this).text(); 
-    console.log("it got to on hover!"); 
 
-    $(this).text("x").addClass("btn-danger"); 
+    $(this).text("delete day").addClass("btn-danger"); 
     
     $('.delete_appt_list').on('click', function(e) {
       e.preventDefault();

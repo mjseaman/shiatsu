@@ -1,7 +1,5 @@
 helpers do
 
-  # THERAPIST = (current_user.type == "Therapist")
-
   def appointments_on(date, id=nil)
     if id
       Appointment.where('start_date = ? AND therapist_id=?',date, id).order("start_at ASC")

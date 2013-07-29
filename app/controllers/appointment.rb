@@ -54,7 +54,7 @@ end
 
 delete '/users/:id/appointments/:id' do
   @appointment = Appointment.find(params[:id])
-  appointment.delete
+  @appointment.delete
 end
 
 put '/users/:id/appointments/:start_date' do

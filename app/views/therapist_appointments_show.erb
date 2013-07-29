@@ -7,7 +7,7 @@
         <a class='delete_appt_list' href="/users/<%= current_user.id %>/appointments/<%= day.first.start_date %>" style="text-decoration:none;"><h4 class="btn btn-large btn-block therapist_day_label"><%= day.first.start_date.strftime("%A, %-m/%d") %></h4></a>
        <% day.each do |appointment| %>
        <div class="dropdown">
-         <a class="btn btn-large btn-block show_appt dropdown-toggle <%= button_class(appointment) %>" data-appointmentid="<%= appointment.id %>" data-toggle="dropdown" data-time="<%= appointment.start_at.strftime("%-I:%M %P") %>" href="javascript:void(0)"><i class="icon-calendar"></i><%= appointment.start_at.strftime("%-I:%M %P") %><b class="caret"></b></a>
+         <a class="btn btn-large btn-block btn-info available show_appt dropdown-toggle data-appointment" id="<%= appointment.id %>" data-toggle="dropdown" data-time="<%= appointment.start_at.strftime("%-I:%M %P") %>" href="javascript:void(0)"><i class="icon-calendar"></i><%= appointment.start_at.strftime("%-I:%M %P") %><b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li class='delete_appt'><a href="/users/<%= appointment.therapist_id %>/appointments/<%= appointment.id %>">delete</a></li>
               </ul>
