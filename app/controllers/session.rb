@@ -13,8 +13,10 @@ post '/sessions' do
     if @user.password == params[:password]
       self.current_user = @user
       redirect to('/')
+    elsif !@user.is_active?
+      @message = "User account inactive"
     else
-      @message = "Invalid password"
+      @message = "Login Error"
       erb :login
     end
   else

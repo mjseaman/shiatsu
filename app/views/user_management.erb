@@ -1,6 +1,6 @@
 
 <div>
-	<table class="table table-striped">
+	<table class="table table-striped table-hover">
 			<tr>
 				<th>User Type</th>
 				<th>First Name</th>
@@ -10,10 +10,13 @@
 				<th>Active</th>
 				<th>Appt. Count</th>
 				<th>Appt. Max</th>
+				<th>Update</th>
 			</tr>
 		<% all_users.each do |user| %>
-			<tr>
-				<td><%= user.type 					%></td>
+			<tr data-userid="<%= user.id %>">
+				<td class="type">
+					<%= user.type %>
+				</td>
 				<td><%= user.first_name 		%></td>
 				<td><%= user.last_name  		%></td>
 				<td><%= user.email 					%></td>
@@ -22,10 +25,36 @@
 				<td><%= user.appt_count			%></td>
 				<td><%= user.appt_count_max	%></td>
 				<td>
-					<a class="btn btn-mini btn-warning" href="javascript:void(0)" >Edit</a>
-					<a class="btn btn-mini btn-danger" href="javascript:void(0)" >Delete</a>
+					<a class="btn btn-mini btn-warning edit" href="javascript:void(0)" >Edit</a>
+					<a class="btn btn-mini btn-danger delete" href="javascript:void(0)" >Delete</a>
 				</td>
 			</tr>
-		<% end %>
+			<tr class="hide update_form">
+				<form name='user_edit' action='/user/edit/<%= user.id %>' method='post'>
+					<input type="hidden" name="_method" value="put">
+					<td>
+						<select class="input-small type" name="user[type]">
+							<% user_types.each do |user_type| %>
+								<option value="<%= user_type %>"><%= user_type %></option>
+							<% end %>
+						</select>
+					</td>
+					<td><input class="input-small" name="user[first_name]" type="text" value="<%= user.first_name %>"></td>
+					<td><input class="input-small" name="user[last_name]" type="text" value="<%= user.last_name %>"></td>
+					<td><input class="input-large" name="user[email]" type="text" value="<%= user.email %>"></td>
+					<td><input class="input-medium" name="user[phone]" type="text" value="<%= user.phone %>"></td>
+					<td>
+						<select class="input-mini" name="user[is_active]">
+								<option value="true">true</option>
+								<option value="false">false</option>
+						</select>
+					</td>
+<!-- 					<td><input name="user[is_active]" type="checkbox" checked="<%= (user.is_active?) ? "yes" : "no" %>"></td> -->
+					<td><%= user.appt_count %></td>
+					<td><input class="input-mini" name="user[appt_count_max]" type="text" value="<%= user.appt_count_max %>"></td>
+					<td><input class="btn btn-mini btn-primary" type="submit"></a></td>
+				</form>
+			</tr>
+			<% end %>
 	</table>
 </div>

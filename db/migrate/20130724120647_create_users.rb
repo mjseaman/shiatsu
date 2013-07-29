@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :phone
-      t.boolean :is_active
+      t.boolean :is_active, default: true
       t.string :type
       t.integer :appt_count, default: 0
       t.integer :appt_count_max, default: 4
