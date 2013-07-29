@@ -52,6 +52,16 @@ end
 	p "appointment #{num}: #{appointment.inspect}"
 end
 
+200.times do |num|
+	appointment = Appointment.create(
+		start_at: ApptTime.rand_time((Date.today - 10).to_time),
+		duration: 30,
+		patient: Patient.all.sample,
+		therapist: Therapist.all.sample
+		)
+	p "appointment #{num}: #{appointment.inspect}"
+end
+
 20.times do |num|
 	appointment = Appointment.create(
 		start_at: ApptTime.rand_time((Date.today + 10).to_time),

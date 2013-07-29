@@ -140,7 +140,9 @@ $(document).ready(function() {
            data: {description: $('.conditions_desc').val()}, 
            }).done(function(){
             updateButton($('.condition_button'),"available btn-info", " Updated!")
-            // $('.user_pref').text($('.pressure').val());
+            $('.new_conditions').append($('.conditions_desc').val())
+            $('.conditions_desc').val('')
+            // $('.current_conditions').val().empty()
            })
     });
 

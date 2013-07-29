@@ -1,9 +1,11 @@
 
+  <div class="left_col">
+
+  <a href="#" class="btn btn-inverse btn-small"><i class="icon-white icon-pencil"></i></a>
   <h2><%=fullname%></h2>
-    <a href="#" class="btn btn-inverse btn-small"><i class="icon-white icon-pencil"></i></a>
-  <h3><%=current_user.email%> </h3>
-  <h5>Total Massages you have booked <%=current_user.appt_count%> </h5>
-  <h5>Available Massage Appointments <%= current_user.appt_count_max - current_user.appt_count %></h5> 
+    
+  <h4><%=current_user.email%> </h4>
+
     
     <p class="lead">Pressure Preference:</p><p class ="lead user_pref"> <%= current_user.pressure_preference %></p>
       <select name='pressurelist' form='pressureprefs' class="pressure">
@@ -20,23 +22,46 @@
   <form name='input' action="/users/<%= current_user.id %>/condition" class='condition' method='post' >
     <input type="hidden" name="_method" value="put" /> 
     <p class="lead conditions">Conditions/Additional Information</p>
-    <textarea class="conditions_desc" id="textarea" rows="6" placeholder="Let us know some pains you   may have or injuries you may want addressed."></textarea>
+    <textarea class="conditions_desc" id="textarea" rows="6" placeholder="Let your technician know anything you want here."></textarea>
     <button type="submit" class="btn btn-success condition_button"> Submit </button>
   </form>  
   
-  
+  <p class="lead current_conditions">These are your conditions or injuries:</p>
+  <p class="new_conditions"> </p>
     <%if current_user.conditions %>
-      <%current_user.conditions.each do |con|%>
-      <p class="lead"><%=con.description%></p>
+      <%current_user.conditions.reverse.each do |con|%>
+      <p><%=con.description%></p>
       <% end %>
   <% end %>
 
-  <p class="lead">Upcoming Appointments</p>
-  <div class="past_appointments">
+  </div>
+
+  <div class="right_col">
+  <h3>Total Massages you have booked <%=current_user.appt_count%> </h3>
+  <h3>Available Massage Appointments <%= current_user.appt_count_max - current_user.appt_count %></h3> 
+  
+  <div class="uppcoming_appointments">
+  <p class="lead">Upcoming Appointments</p> 
     <% if current_user.appointments %>
       <% current_user.appointments.each do |appt| %>
+      <%if appt.start_date > Date.today %>
          <a class="btn btn-large btn-block appt_book"><%= appt.start_date %> <%= appt.start_at.strftime("%-I:%M %P") %> <%=appt.therapist.first_name %></a>
+      <% end %>
       <% end %>
     <% end %>
   
   </div>
+  
+  <div class="past_appointments">
+    <p class="lead">Past Appointments</p>
+    <% if current_user.appointments %>
+      <% current_user.appointments.each do |appt| %>
+        <%if appt.start_date < Date.today %>
+         <a class="btn btn-large btn-block appt_book"><%= appt.start_date %> <%= appt.start_at.strftime("%-I:%M %P") %> <%=appt.therapist.first_name %></a>
+         <%end%>
+      <% end %>
+    <% end %>
+  
+  </div>
+
+</div>

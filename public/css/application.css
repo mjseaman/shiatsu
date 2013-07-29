@@ -90,3 +90,22 @@ img.login {
 /*div.dropdown {
   margin-bottom: 5px;
 }*/
+
+.left_col{
+  float: left;
+  width: 40%;
+}
+
+.right_col{
+  float: left;
+  width: 60%;
+
+}
+
+.past_appointments{
+  padding-top: 5%;
+}
+
+h3{
+  text-align: center;
+}
