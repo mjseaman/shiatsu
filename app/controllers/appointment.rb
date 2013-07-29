@@ -33,6 +33,7 @@ get '/users/:id/appointments/new' do
   erb :new_appointment_bookings
 end
 
+# Therapist Appointment Routes 
 post '/users/:id/appointments' do
   p "these are the params: #{params}"
   @appointments = Appointment.new

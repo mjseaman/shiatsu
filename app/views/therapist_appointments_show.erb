@@ -1,5 +1,8 @@
 <h3>You've created <%= @appointments.count %> </span> appointments! </h3>
-<div class="shadowbox">
+<% if @appointments.count == 0 %>
+<a class="btn btn-large btn-block btn-info available" style="width:175px; margin:0px auto;" href="/users/<%= current_user.id %>/appointments/new">Create</a>
+<% else %>
+<!-- <div class="shadowbox"> -->
   <ul class="horizontal-slide">
   <% appointments_by_day.each do |day| %>
     <li class="day">
@@ -9,10 +12,13 @@
        <div class="dropdown">
          <a class="btn btn-large btn-block btn-info available show_appt dropdown-toggle data-appointment" id="<%= appointment.id %>" data-toggle="dropdown" data-time="<%= appointment.start_at.strftime("%-I:%M %P") %>" href="javascript:void(0)"><i class="icon-calendar"></i><%= appointment.start_at.strftime("%-I:%M %P") %><b class="caret"></b></a>
               <ul class="dropdown-menu">
+                <li class='info_appt'><a href="/users/<%= appointment.therapist_id %>/appointments/<%= appointment.id %>">show info</a></li>
                 <li class='delete_appt'><a href="/users/<%= appointment.therapist_id %>/appointments/<%= appointment.id %>">delete</a></li>
               </ul>
         </div>
       <% end %>
     <% end %>
   </ul>
-</div>
+<% end %>
+<!-- </div>
+ -->
