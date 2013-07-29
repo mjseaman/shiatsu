@@ -6,6 +6,8 @@
     
   <h4><%=current_user.email%> </h4>
 
+
+<% if patient? %>
     
     <p class="lead">Pressure Preference:</p><p class ="lead user_pref"> <%= current_user.pressure_preference %></p>
       <select name='pressurelist' form='pressureprefs' class="pressure">
@@ -65,3 +67,4 @@
   </div>
 
 </div>
+<%end%>
