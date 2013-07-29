@@ -132,18 +132,20 @@ $(document).ready(function() {
            })
     });
 
-  //  started ajax call to update preferences
-  // $('.update_preference').on('click', function(e){
-  //   e.preventDefault()
-  //   $.ajax({
-  //          url: "/users/book",
-  //          type: "put",
-  //          data: { preference: button.data('preference')}
-  //          }).done(function(data){
+  $('.condition').on('submit', function(e){;
+    var form = $(this);
+    e.preventDefault();
+    console.log($('.conditions_desc').val())
+    $.ajax({
+           url: form.attr('action'),
+           type: 'put',        
+           data: {description: $('.conditions_desc').val()}, 
+           }).done(function(){
+            updateButton($('.condition_button'),"available btn-info", " Updated!")
+            // $('.user_pref').text($('.pressure').val());
+           })
+    });
 
-  //          })
-  //   });
-  
 });
 
 function clearButtonClasses(button) {

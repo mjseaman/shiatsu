@@ -5,7 +5,7 @@
   <h5>Total Massages you have booked <%=current_user.appt_count%> </h5>
   <h5>Available Massage Appointments <%= current_user.appt_count_max - current_user.appt_count %></h5> 
     
-    <p class="lead">Pressure Preference:</p><p class ="user_pref"> <%= current_user.pressure_preference %></p>
+    <p class="lead">Pressure Preference:</p><p class ="lead user_pref"> <%= current_user.pressure_preference %></p>
       <select name='pressurelist' form='pressureprefs' class="pressure">
         <option value='Light'>Light</option>
         <option value='Firm'>Firm</option>
@@ -17,12 +17,19 @@
       <button type="submit" class="btn btn-success preference_submit">Update</button>
     </form>
     
-  <form>
-    <p class="lead">Conditions/Additional Information</p>
+  <form name='input' action="/users/<%= current_user.id %>/condition" class='condition' method='post' >
+    <input type="hidden" name="_method" value="put" /> 
+    <p class="lead conditions">Conditions/Additional Information</p>
     <textarea class="conditions_desc" id="textarea" rows="6" placeholder="Let us know some pains you   may have or injuries you may want addressed."></textarea>
-    <button type="submit" class="btn btn-success "> Submit </button>
+    <button type="submit" class="btn btn-success condition_button"> Submit </button>
   </form>  
-
+  
+  
+    <%if current_user.conditions %>
+      <%current_user.conditions.each do |con|%>
+      <p class="lead"><%=con.description%></p>
+      <% end %>
+  <% end %>
 
   <p class="lead">Upcoming Appointments</p>
   <div class="past_appointments">
@@ -33,4 +40,3 @@
     <% end %>
   
   </div>
-

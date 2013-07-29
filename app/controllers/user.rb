@@ -31,7 +31,14 @@ get '/users/:id/profile' do
   erb :profile
 end
 
-
+put '/users/:id/condition' do
+   user = User.find(current_user.id)
+   desc = params[:description]
+   user.conditions <<  Condition.create(description: desc)
+   user.save
+   p user
+   erb :profile
+end
 
 
 get '/users/:id/posts' do
