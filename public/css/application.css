@@ -2,6 +2,7 @@ html, body {
   height: 100%;
 }
 
+
 #wrap {
   min-height: 100%;
 }
@@ -108,4 +109,8 @@ div.dropdown {
 
 h3{
   text-align: center;
+}
+
+h3.new_appt {
+  text-align: left;
 }
