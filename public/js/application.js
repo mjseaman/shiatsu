@@ -1,4 +1,28 @@
 $(document).ready(function() {
+  
+  function clearButtonClasses(button) {
+    button.removeClass('btn-info btn-success btn-primary available unavailable booked');
+  }
+  
+  function updateButton(button, cssClass, message) {
+    clearButtonClasses(button);
+    button.fadeOut(500, function() {
+      button.text(message).fadeIn(500);
+    });
+    button.addClass(cssClass);
+  }
+  
+  function updateMassageCount(count) {
+    $('.massage_count').text(count);
+  }
+  
+  function failBooking(button, message) {
+    updateButton(button, 'btn-danger', message);
+  }
+  
+  function passBooking(button, message) {
+    updateButton(button, 'btn-success booked', message);
+  }
 
   $('.appt_book').on('click', function(e) {
     e.preventDefault();
@@ -6,7 +30,6 @@ $(document).ready(function() {
     var button = $(this);
     var time = button.data('time');
 
-  
     if (button.hasClass('unavailable'))
       {
         void(0);
@@ -49,12 +72,12 @@ $(document).ready(function() {
       }
   });
 
-  /* Therapist Bookings*/
+  // therapist Bookings
   $('.show_appt dropdown').on('hover', function(e) {
     $('.dropdown-toggle').dropdown();
   });
 
-  // Therapist delete appointment 
+  // therapist delete a appointment 
   $('.delete_appt').on('click', function(e) {
     e.preventDefault();
 
@@ -65,6 +88,29 @@ $(document).ready(function() {
     console.log($(this).find('a').attr('href'));
     request.done(function() {
       document.location.reload();
+    });
+  });
+
+  // therapist to delete appointments on the same day
+  $('.therapist_day_label').hover(function() {
+    var ogText = $(this).text(); 
+    console.log("it got to on hover!"); 
+
+    $(this).text("x").addClass("btn-danger"); 
+    
+    $('.delete_appt_list').on('click', function(e) {
+      e.preventDefault();
+        var request = $.ajax({
+          url: $(this).attr('href'),
+          type: 'put'
+        });
+        request.done(function(result) {
+          document.location.reload(result);
+      });
+    }); 
+    
+    $(this).on('mouseleave', function() {
+      $(this).text(ogText).removeClass("btn-danger").delay(2000);
     });
   });
 

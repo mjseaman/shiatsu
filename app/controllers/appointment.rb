@@ -53,13 +53,23 @@ end
 # end
 
 delete '/users/:id/appointments/:id' do
-
-  p "these are the params #{params}"
-  appointment = Appointment.find(params[:id])
+  @appointment = Appointment.find(params[:id])
   appointment.delete
 end
 
-
+put '/users/:id/appointments/:start_date' do
+  # content_type :json
+  # need to get all of the appointments in that list
+  # based on the date
+  p "these are the params #{params}"
+  @appointment = Appointment.find_all_by_therapist_id_and_start_date(params[:id], params[:start_date]) 
+  p "this is the appointment #{@appointment}"
+  @appointment.map(&:delete)
+  @appointment.to_json
+  # @appointment = Appointment.find(params[:id])
+  # grab an entire date for that list that is clicked on and remove it
+  # try to use hover over with an x instead of a drop down
+end
 
 
 # GET /photos index display a list of all photos

@@ -34,12 +34,10 @@
           <% elsif current_user.type == "Patient" %>
             <li><a href="/appointments">Book an Appointment</a></li>
             <li><a href="/users/<%= current_user.id%>/profile">Profile</a></li>
-            <!-- <li><a href="/sessions/logout">Log Out</a></li> -->
           <% elsif current_user.type == "Therapist" %>
             <li><a href="#">Profile</a></li>
             <li><a href="/users/<%= current_user.id %>/appointments">Manage Appointments</a></li>
             <li><a href="/users/<%= current_user.id %>/appointments/new">Create Appointments</a></li>
-            <!-- <li><a href="/sessions/logout">Log Out</a></li> -->
           <% end %>
             <li><a href="/sessions/logout">Log Out</a></li> 
         <% else %>
