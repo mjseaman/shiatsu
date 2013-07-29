@@ -140,7 +140,7 @@ $(document).ready(function() {
            data: {description: $('.conditions_desc').val()}, 
            }).done(function(){
             updateButton($('.condition_button'),"available btn-info", " Updated!")
-            $('.new_conditions').append($('.conditions_desc').val())
+            $('.new_conditions').append($('.conditions_desc').val()+'<br>')
             $('.conditions_desc').val('')
             // $('.current_conditions').val().empty()
            })

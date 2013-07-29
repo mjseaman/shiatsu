@@ -42,36 +42,6 @@ end
 	p "user #{num}: #{user}"
 end
 
-200.times do |num|
-	appointment = Appointment.create(
-		start_at: ApptTime.rand_time((Date.today + 10).to_time),
-		duration: 30,
-		patient: Patient.all.sample,
-		therapist: Therapist.all.sample
-		)
-	p "appointment #{num}: #{appointment.inspect}"
-end
-
-200.times do |num|
-	appointment = Appointment.create(
-		start_at: ApptTime.rand_time((Date.today - 10).to_time),
-		duration: 30,
-		patient: Patient.all.sample,
-		therapist: Therapist.all.sample
-		)
-	p "appointment #{num}: #{appointment.inspect}"
-end
-
-20.times do |num|
-	appointment = Appointment.create(
-		start_at: ApptTime.rand_time((Date.today + 10).to_time),
-		duration: 30,
-		patient: nil,
-		therapist: Therapist.all.sample
-		)
-	p "appointment #{num}: #{appointment.inspect}"
-end
-
 Patient.create(
 		email: "patient@patient.com",
 		first_name: Faker::Name.first_name,
@@ -89,6 +59,36 @@ Admin.create(
 		first_name: "Bo",
 		last_name: "Jangles",
 		password: 'password')
+
+# 200.times do |num|
+# 	appointment = Appointment.create(
+# 		start_at: ApptTime.rand_time((Date.today + 10).to_time),
+# 		duration: 30,
+# 		patient: Patient.all.sample,
+# 		therapist: Therapist.all.sample
+# 		)
+# 	p "appointment #{num}: #{appointment.inspect}"
+# end
+
+200.times do |num|
+	appointment = Appointment.create(
+		start_at: ApptTime.rand_time((Date.today + 10).to_time, (Date.today - 10).to_time),
+		duration: 30,
+		patient: Patient.all.sample,
+		therapist: Therapist.all.sample
+		)
+	p "appointment #{num}: #{appointment.inspect}"
+end
+
+20.times do |num|
+	appointment = Appointment.create(
+		start_at: ApptTime.rand_time((Date.today + 10).to_time),
+		duration: 30,
+		patient: nil,
+		therapist: Therapist.all.sample
+		)
+	p "appointment #{num}: #{appointment.inspect}"
+end
 
 # class ApptTime
 # 	def self.rand_time(from, to=Time.now)
