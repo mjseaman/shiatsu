@@ -119,7 +119,6 @@ $(document).ready(function() {
     $('.appt-new').last().clone().appendTo("#appt-list").show();
   });
 
-
   $('.preference').on('submit', function(e){
     var form = $(this);
     e.preventDefault();
@@ -133,6 +132,18 @@ $(document).ready(function() {
            })
     });
 
+  //  started ajax call to update preferences
+  // $('.update_preference').on('click', function(e){
+  //   e.preventDefault()
+  //   $.ajax({
+  //          url: "/users/book",
+  //          type: "put",
+  //          data: { preference: button.data('preference')}
+  //          }).done(function(data){
+
+  //          })
+  //   });
+  
 });
 
 function clearButtonClasses(button) {
