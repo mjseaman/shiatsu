@@ -19,16 +19,19 @@ before '/users/:id/*' do
   redirect to('/') if @user.nil?
 end
 
+put '/users/:id' do
+   user = User.find(current_user.id)
+   user.pressure_preference = params[:preference]
+   user.save
+   erb :profile
+end
+
 get '/users/:id/profile' do
   @user = User.find_by_id(params[:id])
   erb :profile
 end
 
-#user route to update profile
-# put 'user/:id/profile/update' do
-# #  redirect '/'
-#   user = User.find(current_user.id)
-# end
+
 
 
 get '/users/:id/posts' do

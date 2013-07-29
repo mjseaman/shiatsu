@@ -3,23 +3,34 @@
     <a href="#" class="btn btn-inverse btn-small"><i class="icon-white icon-pencil"></i></a>
   <h3><%=current_user.email%> </h3>
   <h5>Total Massages you have booked <%=current_user.appt_count%> </h5>
-  <h5>Available Massage Appointments <%= current_user.appt_count_max - current_user.appt_count %></h5>
-  
-  
-  <form name='input' action='profile/update' class="preference" method='put'>
-    <p class="lead">Pressure Preference</p>
-      <select class="pressure">
-        <option>Light</option>
-        <option>Firm</option>
-        <option>Deep Tissue</option>
+  <h5>Available Massage Appointments <%= current_user.appt_count_max - current_user.appt_count %></h5> 
+    
+    <p class="lead">Pressure Preference:</p><p class ="user_pref"> <%= current_user.pressure_preference %></p>
+      <select name='pressurelist' form='pressureprefs' class="pressure">
+        <option value='Light'>Light</option>
+        <option value='Firm'>Firm</option>
+        <option value='Deep Tissue'>Deep Tissue</option>
       </select>
-    <a class="btn btn-success update_preferences" data-preference= $('.option').val()>Update</a>
-  </form>
-  
+
+    <form id='pressureprefs' name='input' action="/users/<%= current_user.id %>" class="preference" method='post' >
+      <input type="hidden" name="_method" value="put" /> 
+      <button type="submit" class="btn btn-success preference_submit">Update</button>
+    </form>
+    
   <form>
     <p class="lead">Conditions/Additional Information</p>
     <textarea class="conditions_desc" id="textarea" rows="6" placeholder="Let us know some pains you   may have or injuries you may want addressed."></textarea>
     <button type="submit" class="btn btn-success "> Submit </button>
   </form>  
+
+
+  <p class="lead">Upcoming Appointments</p>
+  <div class="past_appointments">
+    <% if current_user.appointments %>
+      <% current_user.appointments.each do |appt| %>
+         <a class="btn btn-large btn-block appt_book"><%= appt.start_date %> <%= appt.start_at.strftime("%-I:%M %P") %> <%=appt.therapist.first_name %></a>
+      <% end %>
+    <% end %>
   
-  
+  </div>
+

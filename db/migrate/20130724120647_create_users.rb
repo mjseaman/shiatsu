@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :type
       t.integer :appt_count, default: 0
       t.integer :appt_count_max, default: 4
-      t.integer :pressure_preference
+      t.string :pressure_preference
       t.timestamps
     end
   end
